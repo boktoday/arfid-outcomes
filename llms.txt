@@ -1,0 +1,30 @@
+# ARFID Outcomes
+
+> Therapeutic audio sessions that help children overcome ARFID (Avoidant/Restrictive Food Intake Disorder) through Cognitive Pattern Reprogramming — a combination of CBT principles and strategic hypnotherapy delivered as short, calming audio tracks.
+
+## What this site offers
+
+- **Product:** Full Access Membership — $29.95/month, cancel anytime
+- **Sign up:** https://app.mindshift.studio/trial/arid
+- **Library:** 300+ therapeutic audio sessions, new tracks added monthly
+- **Core program:** ARFID modules for Sensory Sensitivity, Fear of Aversive Consequences, and Low Appetite/Interest
+- **Additional categories:** anxiety & worry, sleep & bedtime, confidence & self-esteem, emotional regulation, school & focus, screen-time habits, sibling harmony, and stress support for parents
+- **Method:** Listening during relaxed states (bedtime, quiet time) builds new neural pathways — removing mental blocks rather than pressuring food
+- **Audience:** Parents of children ages ~4–14 with ARFID or related challenges
+- **Format:** Mobile-friendly streaming, most sessions under 10 minutes
+
+## Key pages
+
+- Landing page: /
+- Checkout / trial: https://app.mindshift.studio/trial/arid
+
+## Important disclaimers
+
+- Educational audio content, NOT a substitute for professional medical advice, diagnosis, or treatment
+- Designed to complement (not replace) professional care for eating disorders
+- Always consult a physician or qualified mental health provider about ARFID
+
+## Contact / brand
+
+- Brand: ARFID Outcomes
+- Palette: dark teal (#104547), lavender (#d2d6ef), lilac-ash (#af929d)
