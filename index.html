@@ -221,6 +221,27 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 .faq-item h3 { font-size: 1.05rem; margin-bottom: 8px; }
 .faq-item p { margin-bottom: 0; font-size: 0.95rem; color: var(--dim-grey); }
 
+/* --- LIBRARY BUTTON + MODAL --- */
+.btn-library { display: inline-block; margin-top: 26px; padding: 8px 22px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; color: var(--lavender); background: transparent; border: 1.5px solid rgba(210,214,239,0.55); cursor: pointer; transition: all 0.25s ease; position: relative; z-index: 1; }
+.btn-library:hover { background: rgba(210,214,239,0.15); border-color: var(--lavender); color: var(--white); }
+.modal-overlay { position: fixed; inset: 0; background: rgba(16,69,71,0.75); backdrop-filter: blur(4px); z-index: 200; display: none; align-items: flex-start; justify-content: center; padding: 40px 16px; overflow-y: auto; }
+.modal-overlay.open { display: flex; }
+.modal-box { background: var(--white); border-radius: 20px; max-width: 860px; width: 100%; max-height: 85vh; overflow-y: auto; box-shadow: 0 30px 80px rgba(0,0,0,0.4); animation: modalIn 0.25s ease; }
+@keyframes modalIn { from { opacity: 0; transform: translateY(20px) scale(0.98); } to { opacity: 1; transform: none; } }
+.modal-head { position: sticky; top: 0; background: var(--dark-teal); color: var(--white); padding: 22px 28px; display: flex; justify-content: space-between; align-items: center; z-index: 2; border-radius: 20px 20px 0 0; }
+.modal-head h2 { color: var(--white); font-size: 1.3rem; margin: 0; }
+.modal-close { background: rgba(210,214,239,0.2); color: var(--lavender); border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; transition: background 0.2s; }
+.modal-close:hover { background: var(--lilac-ash); color: var(--white); }
+.modal-body { padding: 26px 28px 34px; }
+.pathway-table { width: 100%; border-collapse: collapse; margin-bottom: 28px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(16,69,71,0.08); }
+.pathway-table th { background: var(--dark-teal); color: var(--white); text-align: left; padding: 12px 18px; font-size: 0.95rem; letter-spacing: 0.5px; }
+.pathway-table td { padding: 0; }
+.pathway-table ul { list-style: none; margin: 0; padding: 0; }
+.pathway-table li { padding: 9px 18px; font-size: 0.9rem; color: var(--iron-grey); border-bottom: 1px solid var(--lavender-light); }
+.pathway-table li:nth-child(even) { background: var(--lavender-light); }
+.pathway-table li:last-child { border-bottom: none; }
+.modal-note { font-size: 0.85rem; color: var(--dim-grey); text-align: center; margin-top: 10px; }
+
 /* --- FINAL CTA --- */
 .final-cta { padding: 80px 0; background: linear-gradient(135deg, var(--dark-teal), var(--teal-mid)); text-align: center; }
 .final-cta h2 { color: var(--white); font-size: 2.2rem; margin-bottom: 14px; }
@@ -260,9 +281,9 @@ footer p { color: var(--lavender); opacity: 0.8; font-size: 0.9rem; }
     <span class="btn-microcopy" style="color: var(--lavender);">Instant access · Cancel anytime</span>
     <div class="hero-trust">
       <div><strong>300+</strong>Audio Sessions</div>
-      <div><strong>3</strong>Core ARFID Modules</div>
       <div><strong>10 min</strong>Average Session Length</div>
     </div>
+    <button class="btn-library" onclick="document.getElementById('libraryModal').classList.add('open')">View Audio Library</button>
   </div>
 </section>
 
@@ -485,6 +506,179 @@ footer p { color: var(--lavender); opacity: 0.8; font-size: 0.9rem; }
     </div>
   </div>
 </footer>
+
+
+<!-- Library Modal -->
+<div class="modal-overlay" id="libraryModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>🎧 The Full Audio Library — 11 Pathways, 300+ Sessions</h2>
+      <button class="modal-close" onclick="document.getElementById('libraryModal').classList.remove('open')" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <table class="pathway-table">
+        <thead><tr><th>Pathway 1: Stress, Anxiety & Overthinking <span style="opacity:0.7; font-weight:400;">(12 sessions)</span></th></tr></thead>
+        <tbody><tr><td><ul>
+          <li>Calm the Overthinking Mind</li>
+          <li>Stress Reset and Deep Regulation</li>
+          <li>Stress Reset for High Performers</li>
+          <li>Stop Replaying the Conversation</li>
+          <li>Safe to Relax Again</li>
+          <li>Reduce Stress & Anxiety in the workplace</li>
+          <li>Quiet the Racing Mind</li>
+          <li>The Pressure Reset Protocol</li>
+          <li>10-minute Calm Reset</li>
+          <li>Stop the Spiral & Regain Control</li>
+          <li>Clear the Overwhelm</li>
+          <li>The space between Pressure and Choice</li>
+        </ul></td></tr></tbody>
+      </table>
+      <table class="pathway-table">
+        <thead><tr><th>Pathway 2: Sleep & Recovery <span style="opacity:0.7; font-weight:400;">(9 sessions)</span></th></tr></thead>
+        <tbody><tr><td><ul>
+          <li>Deep Restful Sleep</li>
+          <li>Turn Down the Pain and Reclaim Comfort</li>
+          <li>The High Impact Off Switch</li>
+          <li>Deep Sleep Authority Repatterning Founders</li>
+          <li>Quiet the Night-time Overthinking</li>
+          <li>Back to Sleep After Waking</li>
+          <li>Nervous System Downshift for Sleep</li>
+          <li>Quiet the Night-Time Mind</li>
+          <li>Sleep After Stressful Days</li>
+        </ul></td></tr></tbody>
+      </table>
+      <table class="pathway-table">
+        <thead><tr><th>Pathway 3: Focus ADHD & Mental Performance <span style="opacity:0.7; font-weight:400;">(10 sessions)</span></th></tr></thead>
+        <tbody><tr><td><ul>
+          <li>Stop the Spiral & Regain Control</li>
+          <li>Rejection Sensitive Dysphoria</li>
+          <li>Emotional Control & Inner Stability</li>
+          <li>Stress Reset for High Performers</li>
+          <li>ADHD Founders Regulation Patterns</li>
+          <li>Focus & Execution for ADHD Mind</li>
+          <li>Emotional Regulation for the ADHD Mind</li>
+          <li>Understanding the Mind Style</li>
+          <li>Boundary Confidence for ADHD Women</li>
+          <li>Self Worth & Identity</li>
+        </ul></td></tr></tbody>
+      </table>
+      <table class="pathway-table">
+        <thead><tr><th>Pathway 4: Relationships & Emotional Balance <span style="opacity:0.7; font-weight:400;">(11 sessions)</span></th></tr></thead>
+        <tbody><tr><td><ul>
+          <li>Quiet the Inner Critic</li>
+          <li>No Longer Homesick Returning to Safety within yourself</li>
+          <li>The Relationship Pressure Reset</li>
+          <li>Letting Go of the Past and Returning to the Present</li>
+          <li>Rebuild Self-Trust and Confidence</li>
+          <li>Relationships & Family Dynamics</li>
+          <li>Rejection Sensitive Dysphoria for Relationships</li>
+          <li>Emotional Control & Inner Stability for Relationships</li>
+          <li>Emotional Pressure Valve</li>
+          <li>Stepping into Your Future Self</li>
+          <li>Healthy Boundaries</li>
+        </ul></td></tr></tbody>
+      </table>
+      <table class="pathway-table">
+        <thead><tr><th>Pathway 5: Habits & Lifestyle Change <span style="opacity:0.7; font-weight:400;">(5 sessions)</span></th></tr></thead>
+        <tbody><tr><td><ul>
+          <li>Break The Habit Loop</li>
+          <li>Lose Your Beer Belly or Muffin Top</li>
+          <li>Drink Less Live More</li>
+          <li>Gambling Help</li>
+          <li>Stop Vaping & Smoking</li>
+        </ul></td></tr></tbody>
+      </table>
+      <table class="pathway-table">
+        <thead><tr><th>Pathway 6: Single Mum’s Reset <span style="opacity:0.7; font-weight:400;">(6 sessions)</span></th></tr></thead>
+        <tbody><tr><td><ul>
+          <li>Learning to Trust Yourself Again</li>
+          <li>Let Go of Guilt & Self-Blame</li>
+          <li>Quiet the Night-time Overthinking</li>
+          <li>Rebuilding Self-Worth After Being Let Down</li>
+          <li>Stop Carrying Everything Alone</li>
+          <li>The Pressure Reset</li>
+        </ul></td></tr></tbody>
+      </table>
+      <table class="pathway-table">
+        <thead><tr><th>Pathway 7: Dream glow Hollow <span style="opacity:0.7; font-weight:400;">(10 sessions)</span></th></tr></thead>
+        <tbody><tr><td><ul>
+          <li>The Bedtime Bells</li>
+          <li>The Thumbstone Mystery</li>
+          <li>The Brave Enough to Try Badge</li>
+          <li>The Worthy as You Are Badge</li>
+          <li>The Three Pebble Path</li>
+          <li>The Switchboard Box</li>
+          <li>The Moonlight Pause</li>
+          <li>Feeling Sad in the Hollow</li>
+          <li>The Dark Night Got Friendly</li>
+          <li>The Excuse Sneaks</li>
+        </ul></td></tr></tbody>
+      </table>
+      <table class="pathway-table">
+        <thead><tr><th>Pathway 8: Menopause, Identity & Emotional Reset <span style="opacity:0.7; font-weight:400;">(10 sessions)</span></th></tr></thead>
+        <tbody><tr><td><ul>
+          <li>Stepping Into Your Future Self for Menopause</li>
+          <li>10-minute Calm Reset</li>
+          <li>Stress Reset and Deep Regulation</li>
+          <li>Safe to Relax Again</li>
+          <li>Emotional Control & Inner Stability for Menopause</li>
+          <li>Quiet the Inner Critic for Menopause</li>
+          <li>Rebuild Self-Trust and Confidence for Menopause</li>
+          <li>Clear the Overwhelm for Menopause</li>
+          <li>The space between Pressure and Choice for Menopause</li>
+          <li>Letting Go of the Past and Returning to the Present for Menopause</li>
+        </ul></td></tr></tbody>
+      </table>
+      <table class="pathway-table">
+        <thead><tr><th>Pathway 9: Body & Mind Reset <span style="opacity:0.7; font-weight:400;">(5 sessions)</span></th></tr></thead>
+        <tbody><tr><td><ul>
+          <li>Anxiety</li>
+          <li>Post Traumatic Stress</li>
+          <li>Procrastination</li>
+          <li>Depression</li>
+          <li>Obsessive Compulsive Disorder</li>
+        </ul></td></tr></tbody>
+      </table>
+      <table class="pathway-table">
+        <thead><tr><th>Pathway 10: Specific Conditions <span style="opacity:0.7; font-weight:400;">(11 sessions)</span></th></tr></thead>
+        <tbody><tr><td><ul>
+          <li>Bruxism</li>
+          <li>Alcoholism</li>
+          <li>Anxiety</li>
+          <li>PTSD - Post Traumatic Stress</li>
+          <li>Depression</li>
+          <li>OCD - Obsessive Compulsive Disorder</li>
+          <li>Drug Addiction</li>
+          <li>Gambling Addiction</li>
+          <li>RSD - Rejection Sensitive Dysphoria</li>
+          <li>Smoking Addiction</li>
+          <li>ARFID (Avoidant Restrictive Food Intake Disorder)</li>
+        </ul></td></tr></tbody>
+      </table>
+      <table class="pathway-table">
+        <thead><tr><th>Pathway 11: MindShift WorkSafe <span style="opacity:0.7; font-weight:400;">(15 sessions)</span></th></tr></thead>
+        <tbody><tr><td><ul>
+          <li>Reduce Stress & Anxiety in the workplace</li>
+          <li>The Pressure Reset Protocol</li>
+          <li>The space between Pressure and Choice</li>
+          <li>Emotional Control & Inner Stability</li>
+          <li>Clear the Overwhelm</li>
+          <li>Stop Replaying the Conversation</li>
+          <li>Healthy Boundaries</li>
+          <li>The Relationship Pressure Reset</li>
+          <li>Rebuild Self-Trust and Confidence</li>
+          <li>Sleep After Stressful Days</li>
+          <li>Psychological Safety and Confidence at Work</li>
+          <li>Managing Workplace Pressure Without Burning Out</li>
+          <li>Staying Steady Through Change and Uncertainty</li>
+          <li>Burnout recovery and energy reset</li>
+          <li>Managing feedback, conflict and expectations</li>
+        </ul></td></tr></tbody>
+      </table>
+      <p class="modal-note">All pathways included with your membership — no tiers, no upsells. New sessions added monthly.</p>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
