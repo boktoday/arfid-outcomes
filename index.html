@@ -221,6 +221,18 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 .faq-item h3 { font-size: 1.05rem; margin-bottom: 8px; }
 .faq-item p { margin-bottom: 0; font-size: 0.95rem; color: var(--dim-grey); }
 
+/* --- AUDIO PLAYER --- */
+.audio-section { padding: 70px 0; background: var(--white); }
+.ao-player { max-width: 640px; margin: 36px auto 0; background: linear-gradient(135deg, var(--dark-teal), var(--teal-mid)); border-radius: 18px; padding: 24px 28px; display: flex; align-items: center; gap: 18px; box-shadow: 0 16px 40px rgba(16,69,71,0.28); }
+.ao-play { flex-shrink: 0; width: 58px; height: 58px; border-radius: 50%; border: none; background: var(--lilac-ash); color: var(--white); font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.2s, background 0.2s; }
+.ao-play:hover { background: #9e7f8b; transform: scale(1.06); }
+.ao-info { flex: 1; min-width: 0; }
+.ao-title { color: var(--white); font-weight: 700; font-size: 0.98rem; margin-bottom: 2px; }
+.ao-sub { color: rgba(210,214,239,0.8); font-size: 0.8rem; margin-bottom: 10px; }
+.ao-bar-wrap { height: 6px; background: rgba(210,214,239,0.25); border-radius: 4px; cursor: pointer; position: relative; }
+.ao-bar { height: 100%; width: 0%; background: var(--lilac-ash); border-radius: 4px; transition: width 0.15s linear; }
+.ao-time { color: var(--lavender); font-size: 0.8rem; font-variant-numeric: tabular-nums; flex-shrink: 0; }
+
 /* --- LIBRARY BUTTON + MODAL --- */
 .btn-library { display: inline-block; margin-top: 26px; padding: 8px 22px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; color: var(--lavender); background: transparent; border: 1.5px solid rgba(210,214,239,0.55); cursor: pointer; transition: all 0.25s ease; position: relative; z-index: 1; }
 .btn-library:hover { background: rgba(210,214,239,0.15); border-color: var(--lavender); color: var(--white); }
@@ -377,6 +389,25 @@ footer p { color: var(--lavender); opacity: 0.8; font-size: 0.9rem; }
     <div class="library-cta">
       <a href="https://app.mindshift.studio/trial/arid?fpr=brendan61&ppid=14976053&crm=mentors&src=&camp=" class="btn btn-accent">Explore All 300+ Sessions</a>
       <span class="btn-microcopy">New tracks added monthly — always included</span>
+    </div>
+  </div>
+</section>
+
+<!-- Audio Message -->
+<section class="audio-section">
+  <div class="container text-center">
+    <span class="section-eyebrow">Listen First</span>
+    <h2>Hear How Change Is Possible</h2>
+    <p style="max-width: 600px; margin: 0 auto;">A two-minute message for every parent who has been told "they'll grow out of it" — and is still waiting.</p>
+    <div class="ao-player">
+      <button class="ao-play" id="aoPlay" aria-label="Play">▶</button>
+      <div class="ao-info">
+        <div class="ao-title">The Potential for Positive Outcomes with ARFID</div>
+        <div class="ao-sub">ARFID Outcomes · Spoken introduction · 1:53</div>
+        <div class="ao-bar-wrap" id="aoBarWrap"><div class="ao-bar" id="aoBar"></div></div>
+      </div>
+      <span class="ao-time" id="aoTime">0:00</span>
+      <audio id="aoAudio" preload="none" src="arfid-images/arfid-outcomes-audio.mp3"></audio>
     </div>
   </div>
 </section>
@@ -680,6 +711,28 @@ footer p { color: var(--lavender); opacity: 0.8; font-size: 0.9rem; }
     </div>
   </div>
 </div>
+
+<script>
+(function(){
+  const a = document.getElementById('aoAudio'),
+        btn = document.getElementById('aoPlay'),
+        bar = document.getElementById('aoBar'),
+        wrap = document.getElementById('aoBarWrap'),
+        time = document.getElementById('aoTime');
+  const fmt = s => Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
+  btn.addEventListener('click', () => a.paused ? a.play() : a.pause());
+  a.addEventListener('play', () => btn.textContent = '❚❚');
+  a.addEventListener('pause', () => btn.textContent = '▶');
+  a.addEventListener('ended', () => { btn.textContent = '▶'; bar.style.width = '0%'; time.textContent = '0:00'; });
+  a.addEventListener('timeupdate', () => {
+    if (a.duration) { bar.style.width = (a.currentTime/a.duration*100) + '%'; time.textContent = fmt(a.currentTime); }
+  });
+  wrap.addEventListener('click', e => {
+    const r = wrap.getBoundingClientRect();
+    if (a.duration) a.currentTime = (e.clientX - r.left) / r.width * a.duration;
+  });
+})();
+</script>
 
 </body>
 </html>
